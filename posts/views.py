@@ -2,6 +2,7 @@
 # Django
 from django.http import HttpResponse
 
+# Utilities
 from datetime import datetime
 
 posts = [
