@@ -1,6 +1,8 @@
 """Posts views."""
 # Django
+from django.shortcuts import render
 from django.http import HttpResponse
+
 
 # Utilities
 from datetime import datetime
@@ -29,12 +31,15 @@ posts = [
 
 def list_posts(request):
     """List existing posts."""
-    content = []
-    for post in posts:
-        content.append("""
-        <p><strong>{name}</strong></p>
-        <p><small>{user} - <i>{timestamp}</i></small></p>
-        <figure><img src="{picture}"></figure>
-        """.format(**post))
+    # content = []
+    # for post in posts:
+    #     content.append("""
+    #     <p><strong>{name}</strong></p>
+    #     <p><small>{user} - <i>{timestamp}</i></small></p>
+    #     <figure><img src="{picture}"></figure>
+    #     """.format(**post))
         
-    return HttpResponse('<br>'.join(content))
+    # return HttpResponse('<br>'.join(content))
+    return render(request, 'feed.html', {'posts':posts})
+
+
