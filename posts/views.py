@@ -1,7 +1,7 @@
 """Posts views."""
 # Django
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 # Utilities
@@ -37,17 +37,10 @@ posts = [
     }
 ]
 
+@login_required #Para evitar que se ingrese si no se autentifica el usuario
 def list_posts(request):
     """List existing posts."""
-    # content = []
-    # for post in posts:
-    #     content.append("""
-    #     <p><strong>{name}</strong></p>
-    #     <p><small>{user} - <i>{timestamp}</i></small></p>
-    #     <figure><img src="{picture}"></figure>
-    #     """.format(**post))
-        
-    # return HttpResponse('<br>'.join(content))
+
     return render(request, 'posts/feed.html', {'posts':posts})
 
 
